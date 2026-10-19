@@ -1,26 +1,82 @@
-# Flipkart Automation (Selenium + Java + TestNG)
+# Flipkart Automation Testing Project
 
-A starter Page Object Model (POM) project demonstrating a Flipkart shopping flow:
-open site → optional manual login → search mobile → select result → add to cart → verify cart → open checkout.
+## Project Overview
+This project automates selected user interactions on the Flipkart e-commerce website using Selenium WebDriver, Java, and TestNG. It follows the Page Object Model (POM) design pattern to improve code reusability and maintainability.
 
-## Requirements
-- JDK 17 or newer
+## Technologies Used
+- Java
+- Selenium WebDriver
+- TestNG
 - Maven
-- Chrome browser
-- Internet access
+- Page Object Model (POM)
+- Chrome Browser
+- Eclipse IDE
 
-Selenium Manager normally resolves the matching ChromeDriver automatically.
+## Test Scenarios
+- Launch the Flipkart website
+- Handle the login flow
+- Close the login popup when available
+- Search for a mobile phone
+- Select the first product from the search results
+- Add the product to the wishlist
+- Click Buy Now
+- Handle the Continue action when available
+- Navigate back to the previous page
 
-## Run
-1. Extract the ZIP.
-2. Open the folder as a Maven project in Eclipse/IntelliJ.
-3. Edit `src/test/resources/config.properties`.
-4. Run `src/test/resources/testng.xml` as a TestNG suite, or run `mvn test`.
+## Project Structure
+```text
+FlipkartAutomation/
+├── pom.xml
+├── README.md
+├── src/
+│   ├── main/java/com/flipkart/
+│   │   ├── base/
+│   │   │   └── BaseClass.java
+│   │   └── pages/
+│   │       ├── HomePage.java
+│   │       ├── LoginPage.java
+│   │       ├── ProductPage.java
+│   │       └── CartPage.java
+│   └── test/
+│       ├── java/com/flipkart/tests/
+│       │   └── FlipkartEndToEndTest.java
+│       └── resources/
+│           ├── config.properties
+│           └── testng.xml
+└── .gitignore
+```
 
-## Login note
-Flipkart may require OTP/CAPTCHA. This starter deliberately does not automate or bypass OTP/CAPTCHA. Run `LoginTest` and complete verification manually if prompted. For an authorized test account, you can enter credentials manually in the browser. Avoid storing passwords in source control.
+## Prerequisites
+- JDK 17 or later
+- Maven
+- Google Chrome
+- Eclipse IDE or IntelliJ IDEA
+- Internet connection
 
-## Important
-Retail websites change frequently and may show different locators, login dialogs, regional content, or bot checks. Locators are examples and may need updating after inspecting the current DOM. Checkout test only opens/verifies the checkout flow; it does not submit an order, payment, or purchase.
+## How to Run
+1. Clone or download this repository.
+2. Import the project as an existing Maven project.
+3. Update the configuration in `src/test/resources/config.properties` if required.
+4. Allow Maven to download the dependencies.
+5. Run `src/test/resources/testng.xml` as a TestNG suite, or execute `mvn test` from the project directory.
 
-The end-to-end test uses one browser session for the flow. If Flipkart blocks automation or requires additional verification, stop and complete any permitted checks manually.
+## Framework Design
+- **BaseClass:** Browser setup and common test configuration.
+- **HomePage:** Homepage actions and product search.
+- **LoginPage:** Login-related interactions.
+- **ProductPage:** Product selection and wishlist/Buy Now actions.
+- **CartPage:** Cart-related page interactions.
+- **TestNG:** Test execution and test management.
+- **Maven:** Dependency management and build automation.
+
+## Important Notes
+- Flipkart may require OTP or CAPTCHA verification. Complete permitted verification manually; this project does not bypass security checks.
+- Website locators and flows may need updates as the website changes.
+- The test attempts selected shopping interactions. It does not intentionally submit an order or make a payment.
+- Use only authorized test accounts and never commit personal phone numbers, passwords, OTPs, or other secrets.
+
+## Author
+Suraj Patil
+
+## Disclaimer
+This project is intended for educational and automation-testing practice. It is not affiliated with or endorsed by Flipkart.
